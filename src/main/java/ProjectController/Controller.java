@@ -30,10 +30,7 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-/**
- *
- * @author Eng
- */
+
 public class Controller  implements ActionListener, ListSelectionListener{
      private SIGFrame frame;
     private InvoiceInterface invoiceDialog;
@@ -49,23 +46,23 @@ public class Controller  implements ActionListener, ListSelectionListener{
         String actionCommand = e.getActionCommand();
         System.out.println("Action: " + actionCommand);
         switch (actionCommand) {
-            case "Load File":               //
+            case "Load File":
                 loadFile();
                 break;
-            case "Save File":              //
+            case "Save File":
                 saveFile();
                 break;
-            case "Create New Invoice":     //
+            case "Create New Invoice":
                 createNewInvoice();
                 break;
-            case "Delete Invoice":        //
+            case "Delete Invoice":
                 deleteInvoice();
                 break;
           
-            case "createInvoiceCancel":       //
+            case "createInvoiceCancel":
                 createInvoiceCancel();
                 break;
-            case "createInvoiceOK":           //
+            case "createInvoiceOK":
                 createInvoiceOK();
                 break;
             case "createLineOK":              
@@ -93,8 +90,6 @@ public class Controller  implements ActionListener, ListSelectionListener{
     public void valueChanged(ListSelectionEvent e) {
         int selectedIndex = frame.getInvoiceTable().getSelectedRow();
         System.out.print(selectedIndex );
-//        int selectedRow = frame.getInvoiceTable().getSelectedRow();
-//        System.out.print(selectedRow);
         if (selectedIndex != -1) {
             System.out.println("You have selected row: " + selectedIndex);
             InvData currentInvoice = frame.getInvoices().get(selectedIndex);
@@ -298,15 +293,19 @@ public class Controller  implements ActionListener, ListSelectionListener{
     }
 
     private void deleteItem() {
-    
-     int selectedRow = frame.getLineTable().getSelectedRow();
+        int selectInvoice = frame.getInvoiceTable().getSelectedRow();
+        int selectRow= frame.getLineTable().getSelectedRow();
 
-        if (selectedRow != -1) {
-            LinesOfTable linesTableModel = (LinesOfTable) frame.getLineTable().getModel();
-            linesTableModel.getLine().remove(selectedRow);
-            linesTableModel.fireTableDataChanged();
+        if (selectInvoice != -1 && selectRow !=-1 ) {
+            InvData invoice =frame.getInvoices().get(selectInvoice);
+            invoice.getLine().remove(selectRow);
+            LinesOfTable linestableModel = new LinesOfTable(invoice.getLine());
+            frame.getLineTable().setModel(linestableModel);
+
+            linestableModel.fireTableDataChanged();
             frame.getInvoicesTable().fireTableDataChanged();
         }
+
     }
 
     private void createLineCancel() {

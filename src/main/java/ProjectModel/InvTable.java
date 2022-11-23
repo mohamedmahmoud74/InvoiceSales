@@ -7,13 +7,9 @@ package ProjectModel;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
-/**
- *
- * @author Eng
- */
 public class InvTable extends AbstractTableModel {
     private ArrayList<InvData> invoices;
-    private String[] columns = {"No.", "Date", "Customer", "Total"};
+    private String[] columns = {"NO.", "Date", "CustomerName", "Total"};
     
     public InvTable(ArrayList<InvData> invoices) {
         this.invoices = invoices;

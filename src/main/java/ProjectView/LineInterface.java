@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package ProjectView;
 
 import java.awt.GridLayout;
@@ -10,10 +7,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-/**
- *
- * @author Eng
- */
+
 public class LineInterface extends JDialog{
     private JTextField itemNameField;
     private JTextField itemCountField;

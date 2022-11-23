@@ -6,21 +6,18 @@ package ProjectModel;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Eng
- */
+
 public class InvData {
     private int number;
     private String date;
-    private String customer;
+    private String customerName;
     private ArrayList<LData> lines;
  
 
     public InvData(int num, String date, String customer) {
         this.number = num;
         this.date = date;
-        this.customer = customer;
+        this.customerName = customer;
     }
 
     public double getInvoiceTotal() {
@@ -39,11 +36,11 @@ public class InvData {
     }
 
     public String getCustomer() {
-        return customer;
+        return customerName;
     }
 
     public void setCustomer(String customer) {
-        this.customer = customer;
+        this.customerName = customer;
     }
 
     public int getNumber() {
@@ -64,11 +61,11 @@ public class InvData {
 
     @Override
     public String toString() {
-        return "Invoice{" + "num=" + number + ", date=" + date + ", customer=" + customer + '}';
+        return "Invoice{" + "num=" + number + ", date=" + date + ", customer=" + customerName + '}';
     }
     
     public String getAsCSV() {
-        return number + "," + date + "," + customer;
+        return number + "," + date + "," + customerName;
     }
     
     
